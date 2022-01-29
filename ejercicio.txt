@@ -1,0 +1,30 @@
+using System;
+
+public class Kata
+{
+  public static bool Narcissistic(int value)
+  {
+      int [] digitos;
+	    int numero1 = value;
+	    if(value >= 0){
+	        int cantidadDigitos = (int)Math.Floor(Math.Log10(value) + 1);
+	        digitos = new int [cantidadDigitos];
+	        int index = cantidadDigitos-1;
+	        while(value > 0 && index >= 0 ){
+            int mod = value % 10;
+            digitos[index] = mod;
+	          value = value / 10;
+	          index--;    
+	        }
+	        
+	        int suma = 0;
+	        for(int i = 0; i < digitos.Length; i++){
+	            suma += (int)Math.Pow(digitos[i],cantidadDigitos) ;
+	        }
+        if(suma == numero1){
+          return true;
+        }
+      }
+    return false;
+    }
+}
